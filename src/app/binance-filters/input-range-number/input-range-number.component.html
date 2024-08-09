@@ -1,0 +1,11 @@
+<fieldset class="flex gap-4">
+  <legend>{{ label() }}</legend>
+  <mat-form-field>
+    <mat-label>Min</mat-label>
+    <input matInput type="number" [(ngModel)]="valueMin" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Max</mat-label>
+    <input matInput type="number" [(ngModel)]="valueMax" />
+  </mat-form-field>
+</fieldset>

@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Filter table</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="formGroup">
+    <app-input-range-number formControlName="volume" label="Trade volume" />
+    <app-input-range-number
+      formControlName="priceChangePercent"
+      label="Price change in percent"
+    />
+    <app-input-range-number
+      formControlName="priceChange"
+      label="Price change"
+    />
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="reset()">Reset</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="formGroup.getRawValue()"
+    [disabled]="formGroup.invalid"
+  >
+    Filter
+  </button>
+</mat-dialog-actions>
