@@ -1,0 +1,7 @@
+@if (value > 0) {
+<span class="text-green-500">{{ value | number : "1.2-2" }}%</span>
+} @else if (value < 0) {
+<span class="text-red-500">{{ value | number : "1.2-2" }}%</span>
+} @else {
+<span>0,00%</span>
+}

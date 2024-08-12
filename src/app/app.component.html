@@ -1,7 +1,10 @@
 <div class="h-screen flex flex-col mx-auto container">
-  <button mat-stroked-button (click)="showFilters()" class="m-4">
-    Filters
-  </button>
+  <div class="flex justify-between items-center flex-wrap gap-4 m-4">
+    <h1 class="text-4xl text-center m-0 text-gray-800">
+      Binance Stock Screener
+    </h1>
+    <button mat-stroked-button (click)="showFilters()">Set Filters</button>
+  </div>
 
   @if (rowData$ | async; as rowData) {
   <app-binance-table

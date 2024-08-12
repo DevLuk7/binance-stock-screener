@@ -1,0 +1,8 @@
+@import '../../../styles/mixins.scss';
+
+.input-number-group {
+  @apply flex flex-row gap-2;
+  @include mobile() {
+    @apply flex-col;
+  }
+}

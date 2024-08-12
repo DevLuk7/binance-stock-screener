@@ -1,0 +1,10 @@
+@import './mixins.scss';
+
+@include mobile() {
+  .ag-paging-panel {
+    --ag-cell-horizontal-padding: 8px;
+  }
+  .ag-paging-page-size {
+    display: none;
+  }
+}

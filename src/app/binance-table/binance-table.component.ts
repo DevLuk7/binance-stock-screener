@@ -11,6 +11,8 @@ import {
 import { CellCurrentPriceComponent } from './cell-current-price/cell-current-price.component';
 import { FiltersFormGroupValue } from '../binance-filters/binance-filters.service';
 import { BinanceData } from '../binance-rest-api.service';
+import { CellCurrencyComponent } from './cell-currency/cell-currency.component';
+import { CellPriceChangePercentComponent } from './cell-price-change-percent/cell-price-change-percent.component';
 
 let filters: FiltersFormGroupValue;
 
@@ -31,33 +33,40 @@ export class BinanceTableComponent {
     type: 'fitGridWidth',
   };
 
-  readonly defaultColDef = {
+  readonly defaultColDef: ColDef = {
     resizable: false,
+    minWidth: 150,
   };
 
   readonly colDefs: ColDef[] = [
-    { field: 'symbol' },
+    {
+      field: 'symbol',
+      headerName: 'Currency',
+      valueGetter: ({ data }) => data.symbol.replace('USDT', ''),
+    },
     {
       field: 'volume',
-      valueGetter: ({ data }) => {
-        return `${Number(data.volume).toFixed(2)}`;
-      },
+      headerName: 'Trade Volume 24h',
+      cellRenderer: CellCurrencyComponent,
+      valueGetter: ({ data }) => data.volume,
     },
     {
       field: 'priceChangePercent',
-      valueGetter: ({ data }) => {
-        return `${Number(data.priceChangePercent).toFixed(2)} %`;
-      },
+      headerName: 'Price Change in percent 24h',
+      cellRenderer: CellPriceChangePercentComponent,
+      valueGetter: ({ data }) => data.priceChangePercent,
     },
     {
       field: 'priceChange',
-      valueGetter: ({ data }) => {
-        return `${Number(data.priceChange).toFixed(3)}`;
-      },
+      headerName: 'Price Change 24h',
+      cellRenderer: CellCurrencyComponent,
+      valueGetter: ({ data }) => data.priceChange,
     },
     {
       field: 'price',
       cellRenderer: CellCurrentPriceComponent,
+      headerName: 'Current Price',
+      sortable: false,
     },
   ];
 

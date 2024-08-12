@@ -13,10 +13,10 @@ export interface BinanceData {
 export class BinanceRestApiService {
   private readonly http = inject(HttpClient);
   readonly symbols$: Observable<BinanceData[]> = this.http
-    .get('https://api.binance.com/api/v3/ticker/24hr')
+    .get<BinanceData[]>('https://api.binance.com/api/v3/ticker/24hr')
     .pipe(
-      map((data: any) => {
-        return data.filter((item: any) => item.symbol.endsWith('USDT'));
+      map((data: BinanceData[]) => {
+        return data.filter((item: BinanceData) => item.symbol.endsWith('USDT'));
       }),
       startWith([])
     );

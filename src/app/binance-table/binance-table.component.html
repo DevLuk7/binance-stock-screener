@@ -1,11 +1,12 @@
 <ag-grid-angular
-  class="ag-theme-quartz"
+  class="ag-theme-material"
   style="height: 100%"
   [rowData]="rowData()"
   [columnDefs]="colDefs"
   [isExternalFilterPresent]="isExternalFilterPresent"
   [doesExternalFilterPass]="doesExternalFilterPass"
   [pagination]="true"
+  [paginationAutoPageSize]="true"
   [defaultColDef]="defaultColDef"
   [autoSizeStrategy]="autoSizeStrategy"
   (gridReady)="onGridReady($event)"

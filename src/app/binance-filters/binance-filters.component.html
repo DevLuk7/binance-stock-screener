@@ -1,14 +1,14 @@
-<h2 mat-dialog-title>Filter table</h2>
+<h2 mat-dialog-title>Set Filters for Currency Table</h2>
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="formGroup">
-    <app-input-range-number formControlName="volume" label="Trade volume" />
+    <app-input-range-number formControlName="volume" label="Trade Volume 24h" />
     <app-input-range-number
       formControlName="priceChangePercent"
-      label="Price change in percent"
+      label="Price change in percent 24h"
     />
     <app-input-range-number
       formControlName="priceChange"
-      label="Price change"
+      label="Price change 24h"
     />
   </form>
 </mat-dialog-content>
