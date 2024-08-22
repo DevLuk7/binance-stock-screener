@@ -13,6 +13,7 @@ import { FiltersFormGroupValue } from '../binance-filters/binance-filters.servic
 import { BinanceData } from '../binance-rest-api.service';
 import { CellCurrencyComponent } from './cell-currency/cell-currency.component';
 import { CellPriceChangePercentComponent } from './cell-price-change-percent/cell-price-change-percent.component';
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 let filters: FiltersFormGroupValue;
 
@@ -48,7 +49,7 @@ export class BinanceTableComponent {
       field: 'volume',
       headerName: 'Trade Volume 24h',
       cellRenderer: CellCurrencyComponent,
-      valueGetter: ({ data }) => data.volume,
+      valueGetter: ({ data }) => coerceNumberProperty(data.quoteVolume),
     },
     {
       field: 'priceChangePercent',
@@ -60,7 +61,7 @@ export class BinanceTableComponent {
       field: 'priceChange',
       headerName: 'Price Change 24h',
       cellRenderer: CellCurrencyComponent,
-      valueGetter: ({ data }) => data.priceChange,
+      valueGetter: ({ data }) => coerceNumberProperty(data.priceChange),
     },
     {
       field: 'price',
